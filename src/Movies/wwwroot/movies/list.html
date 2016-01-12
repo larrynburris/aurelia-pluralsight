@@ -1,0 +1,38 @@
+﻿<template>
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th></th>
+                </tr>
+                <tr repeat.for="movie of movies">
+                    <td>${movie.id}</td>
+                    <td>${movie.title}</td>
+                    <td>${movie.releaseYear}</td>
+                    <td>
+                        <a route-href="route: details; params.bind: {id: movie.id}" class="btn btn-default">
+                            Details
+                        </a>
+                        <a route-href="route: edit; params.bind: {id: movie.id}" class="btn btn-default">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="row">
+            <flip-clock></flip-clock>
+        </div>
+        <div class="row">
+            <google-chart type='pie'
+                          options='{"title": "Distribution of days in 2001Q1"}'
+                          cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]'
+                          rows='[["Jan", 31],["Feb", 28],["Mar", 31]]'>
+            </google-chart>
+        </div>
+    </div>
+</template>

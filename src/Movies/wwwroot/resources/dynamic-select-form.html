@@ -1,0 +1,56 @@
+﻿<template>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h3>${form.title}</h3>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" validate.bind="validation" submit.trigger="save()">
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Field 1</label>
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="Field 1" class="form-control" value.bind="data.field1" readonly/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Field 2</label>
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="Field 2" class="form-control" value.bind="data.field2" readonly/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Field 3</label>
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="Field 2" class="form-control" value.bind="data.field3" readonly/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Field 4</label>
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="Field 4" class="form-control" value.bind="data.field4" readonly/>
+                        </div>
+                    </div>
+
+                    <select class="form-control" id="formSelect" value.bind="selected">
+                        <option repeat.for="selectable of selectables" value.bind="selectable"></option>
+                    </select>
+
+                    <div repeat.for="selectable of selectables" >
+                        <div if.bind="${selectable === selected}">
+                            <h3>${selectable}</h3>
+                        </div>
+                    </div>
+
+                    <input type="submit" disabled.bind="!validation.result.isValid" class="btn btn-primary" value="Save" />
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
